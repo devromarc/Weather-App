@@ -87,17 +87,22 @@ const getFormattedWeatherData = async (searchParams) => {
 //   format = "cccc, LLL dd yyyy '| Local Time:' hh:mm a"
 // ) => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
 
-const formatToLocalTime = (
-  secs,
-  getzone,
-  format = "cccc, dd LLL yyyy' | ' hh:mm a"
-) => DateTime.fromSeconds(secs).setZone(getzone).toFormat(format);
+const formatToLocalTime = (secs, getzone, format = "cccc, LLL dd yyyy ") =>
+  DateTime.fromMillis(secs * 1000)
+    .plus({ minutes: getzone / 60 })
+    .toFormat(format);
 
-const formatToLocalTimeCity = (secs, getzone) =>
-  DateTime.fromSeconds(secs, { getzone }).toFormat("hh:mm a");
+// const formatToLocalTime = (
+//   secs,
+//   getzone,
+//   format = "cccc, dd LLL yyyy' | ' hh:mm a"
+// ) => DateTime.fromSeconds(secs).setZone(getzone).toFormat(format);
+
+// const formatToLocalTimeCity = (secs, getzone) =>
+//   DateTime.fromSeconds(secs, { getzone }).toFormat("hh:mm a");
 
 const iconUrl = (code) => `http://openweathermap.org/img/wn/${code}@2x.png`;
 
 export default getFormattedWeatherData;
 
-export { formatToLocalTime, iconUrl, formatToLocalTimeCity };
+export { iconUrl, formatToLocalTime };

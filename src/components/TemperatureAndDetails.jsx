@@ -2,11 +2,7 @@ import React from "react";
 import { WiHumidity, WiWindy, WiSunrise, WiSunset } from "react-icons/wi";
 import { TbTemperature } from "react-icons/tb";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
-import {
-  formatToLocalTime,
-  iconUrl,
-  formatToLocalTimeCity,
-} from "../services/weatherService";
+import { formatToLocalTime, iconUrl } from "../services/weatherService";
 
 const TemperatureAndDetails = ({
   weather: {
@@ -25,7 +21,7 @@ const TemperatureAndDetails = ({
 }) => {
   return (
     <div>
-      <div className=" flex items-center justify-center py-6 text-xl text-cyan-500">
+      <div className=" flex items-center justify-center py-6 text-xl text-gray-600">
         <p>{details}</p>
       </div>
       <div className=" flex flex-row items-center py-3 justify-between text-white">
